@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.event.*;
 
 public class EjemploComboBox {
 
@@ -66,6 +67,31 @@ class PanelComboBox extends JPanel{
 			
 			superior.add(miCombo);
 			
+			miSlider = new JSlider(8,36,24);
+			
+			miSlider.setMajorTickSpacing(12);
+			
+			miSlider.setMinorTickSpacing(2);
+			
+			miSlider.setPaintTicks(true);
+			
+			miSlider.setPaintLabels(true);
+			
+			miSlider.addChangeListener(new ChangeListener() {
+				
+				//clase interna anonima
+				@Override
+				public void stateChanged(ChangeEvent e) {
+					// TODO Auto-generated method stub
+					
+					texto.setFont(new Font((String)miCombo.getSelectedItem(),Font.PLAIN, miSlider.getValue()));
+				}
+				
+				
+			});
+			
+			superior.add(miSlider);
+			
 			add(superior, BorderLayout.NORTH);
 		}
 		
@@ -74,7 +100,7 @@ class PanelComboBox extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				texto.setFont(new Font((String)miCombo.getSelectedItem(),Font.PLAIN, 18));			}
+				texto.setFont(new Font((String)miCombo.getSelectedItem(),Font.PLAIN, miSlider.getValue()));			}
 			
 			
 		}
@@ -82,5 +108,7 @@ class PanelComboBox extends JPanel{
 		JLabel texto;
 		
 		JComboBox miCombo;
+		
+		JSlider miSlider;
 }
 
