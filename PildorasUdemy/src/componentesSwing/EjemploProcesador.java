@@ -55,11 +55,8 @@ class PanelProcesador extends JPanel{
 			
 			 tamagno = new JMenu("Tamaño");
 			 
-			configuraMenu("Arial","fuente","Arial",1,12);
-			
-			configuraMenu("Courier","fuente","Courier",1,12);
-			
-			configuraMenu("Verdana","fuente","Verdana",1,12);
+			 //-----Configuración de rotulo con Tipo de letra--------------------
+			 
 			
 			miBarra.add(fuente);
 			
@@ -67,13 +64,19 @@ class PanelProcesador extends JPanel{
 			
 			miBarra.add(tamagno);
 			
-			//-------------------------------------------
+			configuraMenu("Arial","fuente","Arial",1,12);
+			
+			configuraMenu("Courier","fuente","Courier",1,12);
+			
+			configuraMenu("Verdana","fuente","Verdana",1,12);
+			
+			//---------Configuración de rotulo con estilo de letra----------------------------------
 			
 			configuraMenu("Negrita","estilo","",Font.BOLD,12);
 			
 			configuraMenu("Cursiva","estilo","",Font.ITALIC,12);
 			
-			//-------------------------------------------
+			//----------Configuración de rotulo con tamaño de letra---------------------------------
 			
 			configuraMenu("12","tamaño","",1,12);
 			
@@ -92,6 +95,11 @@ class PanelProcesador extends JPanel{
 			add(miArea, BorderLayout.CENTER);
 		}
 		
+		//---Se hace un metodo con los rotulos, el menu al que pertenece--
+		//--Dentro del metodo de instancia el item para que sea creado----
+		//---Dentro de estos menus va el tipo de letra, los estilos y el tamaño---
+		//---Para configurar las funcionalidades---
+		
 		public void configuraMenu(String rotulo, String menu, String tipoLetra, int estilos, int tamagnos) {
 			
 			JMenuItem elemMenu = new JMenuItem(rotulo);
@@ -105,10 +113,14 @@ class PanelProcesador extends JPanel{
 			
 			else if(menu=="estilo") {
 				
+				//Solo hay dos opciones por lo tanto si no elige uno debe ser el otro ademas pueden
+				//ser combinaciones
+				
 				estilo.add(elemMenu);
 				
 				if(estilos==Font.BOLD)elemMenu.addActionListener(new StyledEditorKit.BoldAction());
 				
+				//if(estilos==Font.ITALIC)elemMenu.addActionListener(new StyledEditorKit.ItalicAction());
 				else elemMenu.addActionListener(new StyledEditorKit.ItalicAction());
 			}
 			
