@@ -99,6 +99,8 @@ class PanelVariasFuentes extends JPanel{
 			
 			JToolBar barra = new JToolBar();
 			
+			//-----Se agregab objetos de tipo EventoColorFondo a la barra de herrmientas-----
+			
 			barra.add(colorAzul);
 			
 			barra.add(colorRojo);
